@@ -3,27 +3,21 @@
 
 <head>
     <title>Lumenation</title>
-    <meta name='viewport' 
-     content='width=520, initial-scale=1.0, maximum-scale=1.0, 
-     user-scalable=0' >
+    <meta name='viewport' content='initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <style>
         body {
-            color: white;
+            color: rgb(58, 58, 58);
             background: rgb(131, 58, 180);
             background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
+            height: 95vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
-            padding: 10px;
-            min-width: 480px;
-            font-family: arial, helvetica;
+            font-family: 'Roboto', sans-serif;
         }
 
         h1,
         h3 {
-            color: white;
-            text-shadow: 0 0 2px #000;
             text-align: center;
         }
 
@@ -31,20 +25,22 @@
             background: url('lumena.jpg');
             height: 326px;
             width: 500px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            text-shadow: 0 0 20px white;
-            border: solid 2px white;
             border-radius: 10px;
             margin-top: 20px;
         }
 
         #app {
+            margin:10px;
+            padding-bottom: 20px;
+            background: white;
+            width: 600px;
             display: flex;
-            justify-content: center;
+            border-radius: 10px;
             align-items: center;
+            justify-content: center;
             flex-direction: column;
+            background: rgba(255, 255, 255, 0.4)
+
         }
 
         #selects {
@@ -54,7 +50,7 @@
         }
 
         #selects span {
-            padding:0 10px;
+            padding: 0 10px;
         }
 
         button {
@@ -62,16 +58,13 @@
             padding: 0.7em 1.4em;
             margin: 0 0.3em 0.3em 0;
             border-radius: 0.15em;
-            box-sizing: border-box;
+            border:none;
             text-decoration: none;
-            font-family: 'Roboto', sans-serif;
             text-transform: uppercase;
             font-weight: 400;
             color: #FFFFFF;
             background-color: red;
-            box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
             text-align: center;
-            position: relative;
         }
     </style>
 
@@ -150,6 +143,7 @@
                 <option value="Outra">Outra</option>
             </select>
         </div>
+
         <button type="button" id="lumenati">O que eu fiz Lumena?</button>
 
         <canvas id="lumena" width="500" height="326"></canvas>
@@ -178,10 +172,7 @@
 
     fetch("fraseslumena.json", { headers: { 'Content-Type': 'application/json; charset=utf-8' } })
         .then(res => res.json())
-        .then(response => {
-            lumenations = response
-            lumenate()
-        })
+        .then(response => lumenations = response)
 
     dayElement.addEventListener('change', clear)
     monthElement.addEventListener('change', clear)
@@ -199,7 +190,6 @@
 
         let lumenation = `Você ${dayLumene.frase.toLowerCase()} ${monthLumene.frase} ${colorLumene.frase}, meu parceiro!`
         draw(lumenation)
-
     };
 
     function fragmentText(text, maxWidth) {
@@ -232,7 +222,7 @@
         return lines;
     }
 
-    function clear(){
+    function clear() {
         ctx.save();
         ctx.drawImage(background, 0, 0);
         ctx.restore();
@@ -247,9 +237,13 @@
         ctx.drawImage(background, 0, 0);
         var lines = fragmentText(text, width - parseInt(fontSize, 0));
         lines.forEach(function (line, i) {
-            ctx.fillText(line, width / 2, (i + 8) * parseInt(fontSize, 0));
+            ctx.fillText(line, width / 2, (i + 7) * parseInt(fontSize, 0));
         });
         ctx.restore();
+    }
+
+    function share() {
+
     }
 
 </script>
