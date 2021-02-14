@@ -9,7 +9,7 @@
     <style>
         body {
             color: rgb(87, 86, 86);
-            background: rgb(131, 58, 180);
+            background: rgb(131,58,180);
             height: 95vh;
             width: 100%;
             display: flex;
@@ -44,7 +44,7 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            background: rgba(255, 255, 255, 0.5)
+            background: rgba(255, 255, 255, 0.6)
         }
 
         #selects {
@@ -69,6 +69,18 @@
             color: #FFFFFF;
             background-color: red;
             text-align: center;
+        }
+
+        #share {
+            box-shadow: 2px 2px black;
+            color: #FFF;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            background-color: #25d366;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 3px;
         }
     </style>
 
@@ -154,6 +166,12 @@
 
         <canvas id="canvas" width="500" height="326"></canvas>
 
+        <a href="." id="share">
+            <!-- ícone -->
+            <img src="wpp.png">
+            Compartilhar
+        </a>
+
     </div>
 </body>
 
@@ -212,6 +230,8 @@
 
         let lumenation = `Você ${dayLumene.frase.toLowerCase()} ${monthLumene.frase} ${colorLumene.frase}, meu parceiro!`
         document.querySelector('meta[property=og\\:description]').setAttribute('content', lumenation)
+        document.getElementById('share').setAttribute('href','whatsapp://send?text=' + document.location) 
+
         draw(lumenation)
         transform()
     };
@@ -257,10 +277,12 @@
         ctx.clearRect(0, 0, width, height);
         ctx.font = "bold " + fontSize + " " + fontFamily;
         ctx.textAlign = "center";
+        ctx.strokeStyle = "black";
         ctx.fillStyle = fontColour;
         ctx.drawImage(background, 0, 0);
         var lines = fragmentText(text, width - parseInt(fontSize, 0));
         lines.forEach(function (line, i) {
+            ctx.strokeText(line, width / 2, (i + 7) * parseInt(fontSize, 0));
             ctx.fillText(line, width / 2, (i + 7) * parseInt(fontSize, 0));
         });
         ctx.restore();
