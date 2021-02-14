@@ -3,7 +3,7 @@
 
 <head>
     <title>Lumenation</title>
-    <meta name='viewport' content='width=600;initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <meta name='viewport' content='initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <style>
         body {
             color: rgb(87, 86, 86);
@@ -21,9 +21,12 @@
             text-align: center;
         }
 
-        #lumena {
+        #canvas{
+            display: none;
+        }
+
+        #lumenation {
             margin: 30px;
-            background: url('lumena.jpg');
             width: 90%;
             max-width: 500px;
             border-radius: 10px;
@@ -57,7 +60,7 @@
             padding: 0.7em 1.4em;
             margin: 0 0.3em 0.3em 0;
             border-radius: 0.15em;
-            border:none;
+            border: none;
             text-decoration: none;
             text-transform: uppercase;
             font-weight: 400;
@@ -145,20 +148,22 @@
 
         <button type="button" id="lumenati">O que eu fiz Lumena?</button>
 
-        <canvas id="lumena" width="500" height="326"></canvas>
+        <img id="lumenation" src="lumena.jpg">
+
+        <canvas id="canvas" width="500" height="326"></canvas>
 
     </div>
 </body>
 
 <script>
-    let lumenations, day, month;
 
-    const dayElement = document.getElementById('day');
-    const monthElement = document.getElementById('month');
-    const colorElement = document.getElementById('color');
-    const buttonElement = document.getElementById('lumenati')
 
-    var canvas = document.getElementById('lumena'),
+    const dayElement = document.getElementById('day'),
+        monthElement = document.getElementById('month'),
+        colorElement = document.getElementById('color'),
+        buttonElement = document.getElementById('lumenati'),
+        imageElement = document.getElementById('lumenation'),
+        canvas = document.getElementById('canvas'),
         ctx = canvas.getContext('2d'),
         width = +(canvas.width = 500),
         height = +(canvas.height = 326),
@@ -166,18 +171,16 @@
         fontSize = "24px",
         fontColour = "white";
 
-    let background = new Image();
+    let lumenations,
+        day,
+        month,
+        background = new Image();
+
     background.src = 'lumena.jpg';
 
     fetch("fraseslumena.json", { headers: { 'Content-Type': 'application/json; charset=utf-8' } })
         .then(res => res.json())
-        .then(response => {
-            lumenations = response
-            console.log(lumenations)
-        
-        })
-
-
+        .then(response => lumenations = response)
 
     dayElement.addEventListener('change', clear)
     monthElement.addEventListener('change', clear)
@@ -195,6 +198,7 @@
 
         let lumenation = `Você ${dayLumene.frase.toLowerCase()} ${monthLumene.frase} ${colorLumene.frase}, meu parceiro!`
         draw(lumenation)
+        transform()
     };
 
     function fragmentText(text, maxWidth) {
@@ -245,6 +249,12 @@
             ctx.fillText(line, width / 2, (i + 7) * parseInt(fontSize, 0));
         });
         ctx.restore();
+    }
+
+    function transform() {
+        const img = canvas.toDataURL()
+        imageElement.src = img
+        console.log(img)
     }
 
     function share() {
