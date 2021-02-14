@@ -4,6 +4,8 @@
 <head>
     <title>Lumenation</title>
     <meta name='viewport' content='width=550'>
+    <meta property="og:image" content="lumena.jpg">
+    <meta property="og:description" content="O que eu fiz pra Lumena me cancelar?">
     <style>
         body {
             color: rgb(87, 86, 86);
@@ -209,6 +211,7 @@
         window.location.hash = btoa(`${day},${month},${color}`);
 
         let lumenation = `Você ${dayLumene.frase.toLowerCase()} ${monthLumene.frase} ${colorLumene.frase}, meu parceiro!`
+        document.querySelector('meta[property=og\\:description]').setAttribute('content', lumenation)
         draw(lumenation)
         transform()
     };
@@ -266,6 +269,7 @@
     function transform() {
         const img = canvas.toDataURL()
         imageElement.src = img
+        document.querySelector('meta[property=og\\:image]').setAttribute('content', img)
     }
 
     function share() {
