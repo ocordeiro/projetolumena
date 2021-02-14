@@ -10,6 +10,7 @@
             background: rgb(131, 58, 180);
             background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
             height: 95vh;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,8 +24,9 @@
 
         #lumena {
             background: url('lumena.jpg');
-            height: 326px;
-            width: 500px;
+            min-height: 326px;
+            width: 90%;
+            max-width: 500px;
             border-radius: 10px;
             margin-top: 20px;
         }
@@ -127,20 +129,20 @@
 
             <span>Estou com camisa:</span>
             <select id="color">
-                <option value="Branca" selected>Branca</option>
-                <option value="Azul">Azul</option>
-                <option value="Preta">Preta</option>
-                <option value="Rosa">Rosa</option>
-                <option value="Verde">Verde</option>
-                <option value="Amarela">Amarela</option>
-                <option value="Vermelha">Vermelha</option>
-                <option value="Cinza">Cinza</option>
-                <option value="Colorida">Colorida</option>
-                <option value="Roxa">Roxa</option>
-                <option value="Laranja">Laranja</option>
-                <option value="Bege">Bege</option>
-                <option value="Listrada">Listrada</option>
-                <option value="Outra">Outra</option>
+                <option value="1" selected>Branca</option>
+                <option value="2">Azul</option>
+                <option value="3">Preta</option>
+                <option value="4">Rosa</option>
+                <option value="5">Verde</option>
+                <option value="6">Amarela</option>
+                <option value="7">Vermelha</option>
+                <option value="8">Cinza</option>
+                <option value="9">Colorida</option>
+                <option value="10">Roxa</option>
+                <option value="11">Laranja</option>
+                <option value="12">Bege</option>
+                <option value="13">Listrada</option>
+                <option value="14">Outra</option>
             </select>
         </div>
 
@@ -172,7 +174,13 @@
 
     fetch("fraseslumena.json", { headers: { 'Content-Type': 'application/json; charset=utf-8' } })
         .then(res => res.json())
-        .then(response => lumenations = response)
+        .then(response => {
+            lumenations = response
+            console.log(lumenations)
+        
+        })
+
+
 
     dayElement.addEventListener('change', clear)
     monthElement.addEventListener('change', clear)
