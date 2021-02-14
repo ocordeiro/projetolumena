@@ -3,7 +3,7 @@
 
 <head>
     <title>Lumenation</title>
-    <meta name='viewport' content='width=550;initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <meta name='viewport' content='width=550, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <style>
         body {
             color: rgb(87, 86, 86);
@@ -21,7 +21,7 @@
             text-align: center;
         }
 
-        #canvas{
+        #canvas {
             display: none;
         }
 
@@ -156,8 +156,6 @@
 </body>
 
 <script>
-
-
     const dayElement = document.getElementById('day'),
         monthElement = document.getElementById('month'),
         colorElement = document.getElementById('color'),
@@ -176,11 +174,23 @@
         month,
         background = new Image();
 
+    let attrs = atob(window.location.hash.substr(1)).split(',');
+    
     background.src = 'lumena.jpg';
 
     fetch("fraseslumena.json", { headers: { 'Content-Type': 'application/json; charset=utf-8' } })
         .then(res => res.json())
-        .then(response => lumenations = response)
+        .then(response => {
+            lumenations = response
+
+            if (attrs.length) {
+                dayElement.value = attrs[0]
+                monthElement.value = attrs[1]
+                colorElement.value = attrs[2]
+                lumenate()
+            }
+
+        })
 
     dayElement.addEventListener('change', clear)
     monthElement.addEventListener('change', clear)
@@ -195,6 +205,8 @@
         let dayLumene = lumenations.dias.find(value => value.dia == day)
         let monthLumene = lumenations.meses.find(value => value.mes == month)
         let colorLumene = lumenations.cores.find(value => value.cor == color)
+
+        window.location.hash = btoa(`${day},${month},${color}`);
 
         let lumenation = `Você ${dayLumene.frase.toLowerCase()} ${monthLumene.frase} ${colorLumene.frase}, meu parceiro!`
         draw(lumenation)
