@@ -183,6 +183,6 @@ lumenation.loadBrain()
         lumenation.loadBackground(lumenation.lumenate)
         const values = lumenation.getAttrs()
         lumenation.setValues(values)
-
+        lumenation.setListeners()
     })
   //  .catch(err => console.log('Error: ' +  err))
