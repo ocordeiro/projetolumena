@@ -92,6 +92,25 @@ select, input {
     border-radius: 3px;
 }
 
+
+#lumenati {
+
+    display: inline-block;
+
+    box-shadow: 2px 2px black;
+    background-color: red;
+    color: white;
+    width: 200px;
+    text-decoration: none;
+    margin-left:15px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 3px;
+}
+
+
+
+
 #footer{
     display: flex;
 }
@@ -120,8 +139,6 @@ select, input {
     padding: 5px;
     border-radius: 3px;
 }
-
-
 
 #twitter {
     box-shadow: 2px 2px black;
