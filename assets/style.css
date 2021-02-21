@@ -25,11 +25,10 @@ h3 {
 
 #lumenation {
     margin-top: 30px;
-    width: 90%;
+    width: 98%;
     max-width: 580px;
     border-radius: 10px;
     margin-top: 20px;
-
 }
 
 #creditos {
@@ -61,7 +60,7 @@ header{
 #selects {
     justify-content: center;
     display: flex;
-    margin: 20px;
+    margin: 20px 0;
     align-items: center;
 }
 
@@ -73,8 +72,9 @@ select, input {
 }
 
 #selects span {
-    padding: 0 10px;
+    padding: 4px;
 }
+
 
 #lumenati {
     display: inline-block;
@@ -94,9 +94,7 @@ select, input {
 
 
 #lumenati {
-
     display: inline-block;
-
     box-shadow: 2px 2px black;
     background-color: red;
     color: white;
