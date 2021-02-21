@@ -75,8 +75,11 @@ class Lumenation {
     }
 
     loadBackground(draw) {
+    
         this.background = new Image(580, 326);
-        this.background.onload = draw
+        this.background.onload = function (){
+            draw()   
+        }
 
         this.background.src = 'assets/images/lumena.jpg';
 
@@ -180,7 +183,7 @@ let lumenation = new Lumenation()
 
 lumenation.loadBrain()
     .then(() => {
-        lumenation.loadBackground(lumenation.lumenate)
+        lumenation.loadBackground(() => lumenation.lumenate())
         const values = lumenation.getAttrs()
         lumenation.setValues(values)
         lumenation.setListeners()
