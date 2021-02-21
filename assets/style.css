@@ -29,6 +29,7 @@ h3 {
     max-width: 580px;
     border-radius: 10px;
     margin-top: 20px;
+    background: url('images/lumena.jpg');
 }
 
 #creditos {
@@ -98,7 +99,6 @@ select, input {
     font-weight: bold;
     border-radius: 3px;
 }
-
 
 
 #lumenati {
