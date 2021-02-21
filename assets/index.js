@@ -26,6 +26,9 @@ class Lumenation {
 
         this.drawImage(message)
         this.setAttrs(values)
+        this.setWhatsppShare()
+        this.setTwitterShare(message)
+        
     }
 
     getAttrs() {
@@ -98,6 +101,10 @@ class Lumenation {
 
     setWhatsppShare() {
         document.getElementById('share').setAttribute('href', 'whatsapp://send?text=' + document.location)
+    }
+
+    setTwitterShare(text) {
+        document.getElementById('twitter').setAttribute('href', 'https://twitter.com/intent/tweet?url='+ document.location +'&text= ' + text.substring(0,144) )
     }
 
     setListeners() {

@@ -1,3 +1,7 @@
+html, body{
+    padding: 0;
+    margin: 0;
+}
 body {
     font-weight: bold;
     color: rgb(29, 29, 29);
@@ -106,6 +110,23 @@ select, input {
 
 #copy {
     box-shadow: 2px 2px black;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 150px;
+    text-decoration: none;
+    margin-left:15px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+
+
+#twitter {
+    box-shadow: 2px 2px black;
+    background-color: #1DA1F2;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: space-around;
