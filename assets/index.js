@@ -74,11 +74,13 @@ class Lumenation {
         return `${name}, você ${dayLumene.toLowerCase()} ${monthLumene} ${colorLumene}!`
     }
 
-    loadBackground() {
+    loadBackground(draw) {
         this.background = new Image(580, 326);
+        this.background.onload = draw
+
         this.background.src = 'assets/images/lumena.jpg';
 
-        return Promise.resolve(this.background);
+        this.background;
     }
 
     loadBrain() {
@@ -99,8 +101,8 @@ class Lumenation {
         }, 1000)
     }
 
-    setWhatsppShare() {
-        document.getElementById('share').setAttribute('href', 'whatsapp://send?text=' + document.location)
+    setWhatsppShare() {        
+        document.getElementById('share').setAttribute('href', 'whatsapp://send?text=' + encodeURIComponent(document.location))
     }
 
     setTwitterShare(text) {
@@ -178,13 +180,9 @@ let lumenation = new Lumenation()
 
 lumenation.loadBrain()
     .then(() => {
-        lumenation.loadBackground()
-        lumenation.setListeners()
-
+        lumenation.loadBackground(lumenation.lumenate)
         const values = lumenation.getAttrs()
         lumenation.setValues(values)
-
-        lumenation.lumenate()
 
     })
   //  .catch(err => console.log('Error: ' +  err))

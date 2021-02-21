@@ -40,7 +40,7 @@ h3 {
 #app {
     box-shadow: 0px 0px 110px -7px rgba(0,0,0,0.53);
     padding-bottom: 20px;
-    background: rgb(238, 238, 238);
+    background: white;
     color: #333;
     display: flex;
     border-radius: 10px;
@@ -61,8 +61,7 @@ header{
     border-radius: 10px 10px 0 0;
     padding: 10px 40px;
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.99);
-    
+    background: rgb(238, 238, 238);
 }
 
 #selects {
