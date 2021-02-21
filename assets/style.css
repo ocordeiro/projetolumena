@@ -49,6 +49,14 @@ h3 {
     flex-direction: column;
 }
 
+@media (max-width: 600px)
+{
+  #app {
+      height: 100%;
+      justify-content: space-around;
+  }
+}
+
 header{
     border-radius: 10px 10px 0 0;
     padding: 10px 40px;
@@ -91,6 +99,7 @@ select, input {
     font-weight: bold;
     border-radius: 3px;
 }
+
 
 
 #lumenati {
