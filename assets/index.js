@@ -104,7 +104,7 @@ class Lumenation {
     }
 
     setTwitterShare(text) {
-        document.getElementById('twitter').setAttribute('href', 'https://twitter.com/intent/tweet?url='+ document.location +'&text= ' + text.substring(0,144) )
+        document.getElementById('twitter').setAttribute('href', 'https://twitter.com/intent/tweet?url='+ encodeURIComponent(document.location) +'&text= ' + encodeURIComponent(text.substring(0,144)) )
     }
 
     setListeners() {
