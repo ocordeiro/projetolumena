@@ -23,6 +23,11 @@ h3 {
     display: none;
 }
 
+#terms{
+    text-align: center;
+    font-size: 0.7em;
+}
+
 #lumenation {
     margin-top: 30px;
     width: 98%;
